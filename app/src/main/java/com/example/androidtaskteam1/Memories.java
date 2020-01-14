@@ -15,9 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Memories extends AppCompatActivity {
 AdapterViewFlipper viewFlipperImage;
 GridView gridViewImage;
-public int [] image = {R.drawable.imag1,R.drawable.imag2,R.drawable.imag3,
-        R.drawable.imag4,R.drawable.imag5,R.drawable.imag6,
-        R.drawable.imag7,R.drawable.imag8,R.drawable.imag9,R.drawable.imag10};
+public int [] image ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
