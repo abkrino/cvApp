@@ -24,11 +24,32 @@ public class LogIn extends AppCompatActivity {
     }
 
     public void calling() {
+        firstName = findViewById(R.id.firstName);
+        lastName = findViewById(R.id.lastName);
+        emailAddress = findViewById(R.id.emailAddress);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.login);
 
     }
 
     public void handling() {
-        goToWelcomeActivity();
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (firstName.getText().toString().length() < 3) {
+                    firstName.setError("Check First Name");
+                } else if (lastName.getText().toString().length() < 3) {
+                    lastName.setError("Check Last Name");
+                } else if (emailAddress.getText().toString().length() < 5) {
+                    emailAddress.setError("Check Email");
+                } else if (password.getText().toString().length() < 5) {
+                    password.setError("Check Password");
+                } else {
+                    Toast.makeText(LogIn.this, "welcome " + firstName.getText().toString() + " " + lastName.getText().toString(), Toast.LENGTH_SHORT).show();
+                    goToWelcomeActivity();
+                }
+            }
+        });
     }
 
     public void getTextFromEditText() {
@@ -47,6 +68,12 @@ public class LogIn extends AppCompatActivity {
     }
 
     public void goToWelcomeActivity() {
+        Intent ii = new Intent(LogIn.this, Welcome.class);
+        ii.putExtra("firtS", firstName.getText().toString() );
+        ii.putExtra("emailS",emailAddress.getText().toString());
+        ii.putExtra("lastS",lastName.getText().toString());
+        startActivity(ii);
+    }
 
     }
-}
+

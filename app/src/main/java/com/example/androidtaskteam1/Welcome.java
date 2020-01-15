@@ -21,17 +21,34 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_welcom);
         calling();
         handling();
+        getDataFromLoginActivity();
     }
 
     private void calling() {
+        firstNameTV=findViewById(R.id.firstNameTV);
+        lastNameTV=findViewById(R.id.lastNameTV);
+        emailAddressTv=findViewById(R.id.emailAddressTv);
+        btCheckCv=findViewById(R.id.btCheckCv);
+        imageUser=findViewById(R.id.imageUser);
 
     }
 
     private void handling() {
+        imageUser.setImageResource(R.drawable.img_1);
+        btCheckCv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToCvActivity();
+            }
+        });
 
     }
 
     public void getDataFromLoginActivity() {
+        rx=getIntent().getExtras();
+        firstNameTV.setText(rx.getString("firstS"));
+        lastNameTV.setText(rx.getString("lastS"));
+        emailAddressTv.setText(rx.getString("emailS"));
 
     }
     public void setDataToActivity() {
@@ -43,7 +60,7 @@ public class Welcome extends AppCompatActivity {
     }
     public void goToCvActivity(){
 
-
+        startActivity(new Intent(Welcome.this,Cv.class));
     }
 
 }
